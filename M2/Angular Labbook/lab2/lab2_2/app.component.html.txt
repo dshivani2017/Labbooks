@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Shivani</h2><br><br>
+  
+<table class="table">
+  <thead >
+    <tr class="bg-dark text-white">
+      <th><a (click)="sortID()"><u>ID</u></a></th>
+      <th><a (click)="sortName()"><u>Name</u></a></th>
+      <th><a (click)="sortCost()"><u>Cost</u></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="bg-dark text-white" *ngFor="let product of productList">
+      <td>{{product.productId}}</td>
+      <td>{{product.productName}}</td>
+      <td>{{product.productCost}}</td>
+    </tr>
+  </tbody>
+</table><br><br>
+</div>

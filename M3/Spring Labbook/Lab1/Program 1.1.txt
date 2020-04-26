@@ -1,0 +1,91 @@
+EmployeeBean.java---
+
+
+public class EmployeeBean {
+private int empId;
+private String empName;
+private double salary;
+private String businessUnit;
+private int age;
+
+public int getEmpId()
+{
+	return empId;
+}
+public void setEmpId(int empId)
+{
+	this.empId=empId;
+}
+public String getEmpName()
+{
+	return empName;
+}
+public void setEmpName(String empName)
+{
+	this.empName=empName;
+}
+public double getSalary()
+{
+	return salary;
+}
+public void setSalary(double salary)
+{
+	this.salary=salary;
+}
+public String getBusinessUnit()
+{
+	return businessUnit;
+}
+public void setBusinessUnit(String businessUnit)
+{
+	this.businessUnit=businessUnit;
+}
+public int getAge()
+{
+	return age;
+}
+public void setAge(int age)
+{
+	this.age=age;
+}
+
+}
+
+
+EmployeeDao.java---
+
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class EmployeeDao {
+public static void main(String[]args )
+{
+	ApplicationContext context= new ClassPathXmlApplicationContext("helloBean.xml");
+	EmployeeBean employeeObj = (EmployeeBean) context.getBean("employee");
+	System.out.println("Employee Details");
+	System.out.println("-----------------------");
+	System.out.println("Employee ID : "+employeeObj.getEmpId());
+	System.out.println("Employee Name : "+employeeObj.getEmpName());
+	System.out.println("Employee Salary:"+employeeObj.getSalary());
+	System.out.println("Employee BU:"+employeeObj.getBusinessUnit());
+	System.out.println("Employee Age : "+employeeObj.getAge());
+}
+}
+
+helloBean.xml---
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   <bean id="employee" class="EmployeeBean" > 
+       <property name="empId" value="123"/>       
+       <property name="empName" value="Shivani Diwakar"/>
+       <property name="salary" value="40000.0"/>
+       <property name="businessUnit" value="PES-BU"/>
+       <property name="age" value="30"/>
+   </bean>
+</beans>

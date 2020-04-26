@@ -1,0 +1,26 @@
+import { Component } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  booklist:any=[];
+  id:number
+  title:string;
+  author:string;
+  year:number;
+  modifiedBookList:any=[];
+  constructor(private httpClient: HttpClient){
+  }
+  ngOnInit(){
+    this.httpClient.get("assets/data/booklist.json").subscribe(data =>{
+      console.log(data);
+      this.booklist = data;
+    })
+    console.log(this.booklist)
+  }
+}

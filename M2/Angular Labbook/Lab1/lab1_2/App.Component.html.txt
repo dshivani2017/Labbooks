@@ -1,0 +1,14 @@
+<div  class="jumbotron jumbotron-fluid" style="background-color:burlywood; width:200px; height:500px " >
+    <h2 style="background-color:rgb(42, 165, 58)">Shivani Diwakar</h2>
+  <h2 class="text-primary">Angular Operation</h2>
+  <form class="form" class="text-secondary" (ngSubmit)="displayDetails()" method="GET">
+    <h3 style="background-color:rgb(119, 0, 255); width:30px"> ID: </h3><input type="text" class="form-control col-sm-5" [(ngModel)]="id1" name="id1"><br>
+    <h3 style="background-color:rgb(119, 0, 255); width:60px"> Name:</h3> <input type="text" class="form-control col-sm-5" [(ngModel)]="name1" name="name1"><br>
+    <h3 style="background-color:rgb(119, 0, 255); width:105px"> Designation:</h3> <input type="text" class="form-control col-sm-5" [(ngModel)]="designation1" name="designation1"><br>
+   <h3 style="background-color:rgb(119, 0, 255); width:70px"> Salary: </h3> <input type="text" class="form-control col-sm-5" [(ngModel)]="salary1" name="salary1" ><br><br>
+    <input type="submit" class="btn btn-info" value="Submit" style="background-color:chocolate; width:150px; height:40px">
+  </form>
+</div><br><br>
+<div class="container" *ngIf="check2">
+  {{id1}}  {{name1}}  {{designation1}}  {{salary1}}
+</div>

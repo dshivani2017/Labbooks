@@ -1,0 +1,52 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'MyFirstProject';
+  id:string;
+  name:string;
+  cost:string;
+  available:string;
+  category:string;
+  store1:string;
+  store2:string;
+  store3:string;
+  store4:string;
+  check:boolean=false;
+  text:string;
+
+  id1:number;
+  name1:number;
+  designation1:string;
+  salary1:number;
+  check2:boolean=false;
+  text2:string;
+
+
+  display(){
+    this.text=null;
+    this.check=true;
+    if(this.store1){
+      this.text=this.text+" Big-Bazar";
+    }
+    if(this.store2){
+      this.text=this.text+" D-Mart";
+    }
+    if(this.store3){
+      this.text=this.text+" Reliance";
+    }
+    if(this.store4){
+      this.text=this.text+" Megastore";
+    }
+  };
+
+  displayDetails(){
+
+    this.check2=true;
+
+  }
+}

@@ -1,0 +1,145 @@
+EmployeeBean1.java---
+
+public class EmployeeBean1 {
+private int empId;
+private String empName;
+private double salary;
+public SBU businessUnit;
+private int age;
+
+public int getEmpId()
+{
+	return empId;
+}
+public void setEmpId(int empId)
+{
+	this.empId=empId;
+}
+public String getEmpName()
+{
+	return empName;
+}
+public void setEmpName(String empName)
+{
+	this.empName=empName;
+}
+public double getSalary()
+{
+	return salary;
+}
+public void setSalary(double salary)
+{
+	this.salary=salary;
+}
+public SBU getBusinessUnit()
+{
+	return businessUnit;
+}
+public void setBusinessUnit(SBU businessUnit)
+{
+	this.businessUnit=businessUnit;
+}
+public int getAge()
+{
+	return age;
+}
+public void setAge(int age)
+{
+	this.age=age;
+}
+public void getSbuDetails()
+{
+
+	System.out.println("Employee age="+age);
+	System.out.println("Employee Id="+empId);
+	System.out.println("Employee Name="+empName);
+	System.out.println("Employee Salary="+salary);	
+	System.out.println(businessUnit);
+}
+}
+
+
+SBU.java--
+public class SBU {
+ private int sbuId;
+ private String sbuName;
+ private String sbuHead;
+public int getSbuId()
+{
+	return sbuId;
+}
+public void setSbuId(int sbuId)
+{
+	this.sbuId=sbuId;
+}
+public String getSbuName()
+{
+	return sbuName;
+}
+public void setSbuName(String sbuName)
+{
+	this.sbuName=sbuName;
+}
+public String getSbuHead()
+{
+	return sbuHead;
+}
+public void setSbuHead(String sbuHead)
+{
+	this.sbuHead=sbuHead;
+}
+public String toString ()
+{
+	System.out.println("SBU Details");
+	System.out.println("------------------");
+	System.out.print("SBU Id="+sbuId);
+	System.out.print(",SBU Name="+sbuName);
+	return ",SBU Head="+sbuHead;
+}
+ 
+public void displaySBU()
+{
+	System.out.println("SBU Details");
+	System.out.println("------------------");
+	System.out.print("SBU Id="+sbuId);
+	System.out.print(",SBU Name="+sbuName);
+	System.out.println(",SBU Head="+sbuHead);
+	System.out.println(" ");
+}
+}
+
+helloBean1.xml--
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+      <bean id="employee" class="EmployeeBean1"> 
+      <property name="age" value="19"></property> 
+<property name="empId" value="101"></property>  
+<property name="empName" value="Shivani Diwakar"></property>  
+<property name="salary" value="50000"></property>  
+<property name="businessUnit" ref="SBU"></property>  
+</bean>    
+<bean id="SBU" class="SBU">  
+<property name="sbuId" value="1234"></property>  
+<property name="sbuName" value="Suraj Diwakar"></property>  
+<property name="sbuHead" value="Product Engineering Service"></property>  
+</bean>  
+  
+</beans>
+
+SbuDetails.java--
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class SbuDetails {
+	public static void main(String[]args )
+	{
+		ApplicationContext context= new ClassPathXmlApplicationContext("helloBean1.xml");
+		EmployeeBean1 employeeObj = (EmployeeBean1) context.getBean("employee");
+employeeObj.getSbuDetails();
+}
+}

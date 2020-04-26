@@ -1,0 +1,35 @@
+<body>
+  <div class="container my-3">
+  <h1>Shivani</h1>
+  <h3>Add Employee Table</h3>
+  <form class="form" #f1="ngForm" (ngSubmit)="addDetails()">
+    
+    ID:<input type="text" class="form-control col-sm-3" placeholder="Enter ID" [(ngModel)]="empId" name="empId">
+    Name:<input type="text" class="form-control col-sm-3" placeholder="Enter Name" [(ngModel)]="empName" name="empName">
+    Salary:<input type="text" class="form-control col-sm-3" placeholder="Enter salary" [(ngModel)]="salry" name="salry">
+    Deisgnation:<input type="text" class="form-control col-sm-3" placeholder="Enter designation" [(ngModel)]="desig" name="desig"><br>
+
+    <input type="submit" class="btn btn-success" value="Add Employee">
+
+  </form>
+</div><br>
+<div class="container">
+  <app-child (obj)="deleteTableRow($event)" [employeeList]="employeeInfo" (obj2)="updateTableRow($event)"></app-child>
+</div>
+
+
+
+<div class="container">
+  <h3>Update Table</h3>
+  <form class="form" #f1="ngForm" (ngSubmit)="updateTable()">
+
+    ID:<input type="text" class="form-control col-sm-3" value={{UempId}} [(ngModel)]="UempId" name="UempId">
+    Name:<input type="text" class="form-control col-sm-3" value={{UempName}} [(ngModel)]="UempName" name="UempName">
+    Salary:<input type="text" class="form-control col-sm-3" value={{Usalry}} [(ngModel)]="Usalry" name="Usalry">
+    Designation:<input type="text" class="form-control col-sm-3" value={{Udesignation}} [(ngModel)]="Udesignation" name="Udesignation">
+
+    <br>
+    <input type="submit" class="btn btn-info" value="Update Info">
+  </form>
+</div>
+</body>

@@ -1,0 +1,134 @@
+EmployeeBean1.java---
+public class EmployeeBean1 {
+private int empId;
+private String empName;
+private double salary;
+public SBU businessUnit;
+private int age;
+
+public int getEmpId()
+{
+	return empId;
+}
+public void setEmpId(int empId)
+{
+	this.empId=empId;
+}
+public String getEmpName()
+{
+	return empName;
+}
+public void setEmpName(String empName)
+{
+	this.empName=empName;
+}
+public double getSalary()
+{
+	return salary;
+}
+public void setSalary(double salary)
+{
+	this.salary=salary;
+}
+public SBU getBusinessUnit()
+{
+	return businessUnit;
+}
+public void setBusinessUnit(SBU businessUnit)
+{
+	this.businessUnit=businessUnit;
+}
+public int getAge()
+{
+	return age;
+}
+public void setAge(int age)
+{
+	this.age=age;
+}
+}
+
+
+SBU.java---
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+      <bean id="employee" class="EmployeeBean1"> 
+      <property name="age" value="19"></property> 
+<property name="empId" value="101"></property>  
+<property name="empName" value="Shivani Diwakar"></property>  
+<property name="salary" value="50000"></property>  
+<property name="businessUnit" ref="SBU"></property>  
+</bean>    
+<bean id="SBU" class="SBU">  
+<property name="sbuId" value="1234"></property>  
+<property name="sbuName" value="Suraj Diwakar"></property>  
+<property name="sbuHead" value="Product Engineering Service"></property>  
+</bean>  
+  
+</beans>
+
+
+Details2---
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Details2 {
+
+	public static void main(String[] args) {
+		ApplicationContext context= new ClassPathXmlApplicationContext("helloBean2.xml");
+		SBU employeeObj = (SBU) context.getBean("S");
+		employeeObj.displaySBU();
+		ArrayList<EmployeeBean1> al=new ArrayList<EmployeeBean1>();
+		EmployeeBean1 obj=new EmployeeBean1();
+		obj.setEmpId(111);
+		obj.setEmpName("Shivani Diwakar");
+		obj.setAge(30);
+		obj.setSalary(50000.0);
+		EmployeeBean1 obj1=new EmployeeBean1();
+		obj1.setEmpId(222);
+		obj1.setEmpName("Suraj Diwakar");
+		obj1.setAge(30);
+		obj1.setSalary(30000.0);
+		al.add(obj);
+		al.add(obj1);
+		System.out.println("Employee Details");
+		System.out.println("------------");
+		Iterator it=al.iterator();
+		while(it.hasNext())
+		{
+			EmployeeBean1 s=(EmployeeBean1)it.next();
+			System.out.print("Employee age="+s.getAge());
+			System.out.print(",Employee Id="+s.getEmpId());
+			System.out.print(",Employee Name="+s.getEmpName());
+			System.out.println(",Employee Salary="+s.getSalary());
+			
+		}
+
+	}
+
+}
+
+helloBean2.xml--
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+<bean id="S" class="SBU">  
+<property name="sbuId" value="1234"></property>  
+<property name="sbuName" value="Suraj Diwakar"></property>  
+<property name="sbuHead" value="Product Engineering Service"></property>  
+</bean>  
+  
+</beans>

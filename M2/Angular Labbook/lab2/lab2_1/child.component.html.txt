@@ -1,0 +1,19 @@
+<div>
+    <table class="table-bordered" >
+        <thead class="bg-success">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Department</th>
+            <th colspan="2" style="text-align: center;">Action</th>
+        </thead>
+        <tbody *ngFor="let emp of employeeList">
+            <td>{{emp.employeeId}}</td>
+            <td>{{emp.employeeName}}</td>
+            <td>{{emp.salary}}</td>
+            <td>{{emp.department}}</td>
+            <td><input type="submit" value="update" (click)=updateRow(emp)></td>
+            <td><input type="submit" value="delete" (click)=deleteRow(emp)></td>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+  <h1>Shivani</h1>
+  <h1>Product Form</h1>
+  <form class="form" #f1="ngForm" class="p-3 mb-2 bg-light" method="get" (ngSubmit)="display()">
+    Product ID:
+    <input type="text" class="form-control col-sm-5" [(ngModel)]="id" name="id" #id1="ngModel" required>
+    <div *ngIf="f1.submitted && id1.invalid">
+      <div class="text-info" *ngIf="id1.errors.required">ID cannot be left blank!</div>
+      <br>
+    </div>
+    Product Name:
+    <input type="text" class="form-control col-sm-5" [(ngModel)]="name" name="name" #name1="ngModel" required>
+    <div *ngIf="f1.submitted && name1.invalid">
+      <div class="text-info" *ngIf="name1.errors.required">Name cannot be empty!</div>
+    </div>
+    <br>
+    Product Cost:
+    <input type="text" class="form-control col-sm-5" [(ngModel)]="cost" name="cost" #cost1="ngModel" required>
+    <div *ngIf="f1.submitted && cost1.invalid">
+      <div class="text-info" *ngIf="cost1.errors.required">Cost cannot be empty!</div>
+    </div>
+    <br>
+    Product Online:<br>
+    <input type="radio" class="radio-inline" value="True"[(ngModel)]="available" name="available" #avalbl="ngModel" required>Yes
+    <input type="radio" class="radio-inline" value="No" [(ngModel)]="available" name="available" #avalbl="ngModel" required>No
+    <div *ngIf="f1.submitted && avalbl.invalid">
+      <div class="text-info" *ngIf="avalbl.errors.required">Select one!</div>
+    </div>
+    <br>
+    
+    Product Category: <select class="form-control col-sm-4" [(ngModel)]="category" name="category" #cat="ngModel" required>
+        <option>Grocery</option>
+        <option>Mobile</option>
+        <option>Electronics</option>
+        <option>Cloths</option>
+      </select>
+      <div *ngIf="f1.submitted && cat.invalid">
+        <div class="text-info" *ngIf="cat.errors.required">Select one!<br></div>
+      </div>
+      <br>
+    Available in store: <input type="checkbox" class="checkbox-inline" value="Big Bazar" [(ngModel)]="store1" name="store1" #stor1="ngModel" required>Big Bazar
+    <input type="checkbox" class="checkbox-inline" value="D Mart" [(ngModel)]="store2" name="store2" #stor2="ngModel" required>DMart 
+    <input type="checkbox" class="checkbox-inline" value="Reliance" [(ngModel)]="store3" name="store3" #stor3="ngModel" required>Reliance 
+    <input type="checkbox" class="checkbox-inline" value="Megastore" [(ngModel)]="store4" name="store4" #stor4="ngModel" required>Mega Store
+    <div *ngIf="f1.submitted && stor1.invalid && stor2.invalid && stor3.invalid && stor4.invalid">
+      <div class="text-info" *ngIf="stor1.errors.required && stor2.errors.required && stor3.errors.required && stor4.errors.required">Select atleast one!</div>
+    </div><br>
+    <input type="submit" class="btn btn-danger" value="Submit">
+  </form>
+
+    <div *ngIf="check">
+      Product Id:       {{id}}<br>
+      Product Name:     {{name}}<br>
+      Cost:             {{cost}}<br>
+      Availbale Online: {{available}}<br>
+      Product Category: {{category}}<br>
+      Available at:     {{text}}
+    </div>
+</div>

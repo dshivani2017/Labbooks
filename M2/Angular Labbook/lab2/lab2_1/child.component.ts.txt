@@ -1,0 +1,32 @@
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import {EmployeeInfo} from '../Employeeinfo';
+
+
+@Component({
+  selector: 'app-child',
+  templateUrl: './child.component.html',
+  styleUrls: ['./child.component.css']
+})
+export class ChildComponent implements OnInit {
+
+  //@Input() namesList:string[];
+  //@Output() outputObj = new EventEmitter();
+  @Input() employeeList:EmployeeInfo[];
+  @Output() obj=new EventEmitter();
+  @Output() obj2=new EventEmitter();
+  
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  updateRow(emp:EmployeeInfo)
+  {
+    this.obj2.emit(emp);
+  }
+  deleteRow(emp:EmployeeInfo)
+  {
+    this.obj.emit(emp);
+  }
+  
+}

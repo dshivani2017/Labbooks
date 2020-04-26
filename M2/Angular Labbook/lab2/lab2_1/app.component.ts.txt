@@ -1,0 +1,72 @@
+import { Component } from '@angular/core';
+import{EmployeeInfo} from './EmployeeInfo';
+
+
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'LabAssign';
+  empId:string;
+  empName:string;
+  salry:string;
+  desig:string;
+  UempId:string;
+  UempName:string;
+  Usalry:string;
+  Udesignation:string;
+
+  name1:string
+
+  dataString:string="Creation of custom pipes to reverse string..."
+  
+  data2:EmployeeInfo;
+  
+  employeeInfo:EmployeeInfo[]=[
+    {employeeId:'201' , employeeName:'Shivani',salary:'80000',department:'Software Engineer'},
+    {employeeId:'202',employeeName:'Sonee',salary:'70000',department:'HR'},
+    {employeeId:'203',employeeName:'Suraj',salary:'70000',department:'Software Engineer'}
+  ]
+
+  addDetails(){
+    let emp=new EmployeeInfo();
+    emp.employeeId=this.empId;
+    emp.employeeName=this.empName;
+    emp.salary=this.salry;
+    emp.department=this.desig;
+    this.employeeInfo.push(emp);
+    
+  }
+
+  deleteTableRow(data:EmployeeInfo){
+    var index:number=0;
+    for(let emp1 of this.employeeInfo){
+      if(emp1.employeeId==data.employeeId){
+        break;
+      }
+      index++
+    }
+    this.employeeInfo.splice(index,1);
+  }
+
+  updateTableRow(data:EmployeeInfo){
+    this.UempId=data.employeeId;
+    this.UempName=data.employeeName;
+    this.Usalry=data.salary;
+    this.Udesignation=data.department;
+    this.data2=data;
+    }
+
+    updateTable(){
+      this.data2.employeeId=this.UempId;
+      this.data2.employeeName=this.UempName;
+      this.data2.salary=this.Usalry;
+      this.data2.department=this.Udesignation;
+    }
+
+   
+
+  }

@@ -1,0 +1,115 @@
+import { Component } from '@angular/core';
+import {Product} from './Product'
+import{HttpClient,HttpClientModule} from '@angular/common/http'
+import { Books } from './Books';
+import {FiledisplayService} from './filedisplay.service'
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+
+  constructor(private filedisplay:FiledisplayService){
+
+  }
+
+  title = 'LabAssign2';
+
+  productList:Product[]=[
+    {productId:1,productName:"Samsung",productCost:60000},
+    {productId:2,productName:"LG",productCost:50000},
+    {productId:3,productName:"MI",productCost:30000},
+    {productId:4,productName:"Toshiba",productCost:90000},
+    {productId:5,productName:"Sony",productCost:75000}
+  ]
+  bookList:any=[];
+  errorMsg:string;
+
+  filename:string;
+  condition:boolean=false;
+  id:number;
+  display:string;
+
+  check(){
+    this.condition=true;
+  }
+
+  checkAll(){
+    this.condition=false;
+  }
+
+
+  sortName(){
+    
+    for(let i=0;i<this.productList.length-1;i++){
+      for(let j=0;j<this.productList.length-i-1;j++){
+        let emp1:Product=this.productList[j];
+        let emp2:Product=this.productList[j+1];
+        let emp3:Product;
+        let index=emp1.productName.localeCompare(emp2.productName);
+        if(index==1){
+          emp3=this.productList[j]
+          this.productList[j]=this.productList[j+1]
+          this.productList[j+1]=emp3
+        }
+      }
+    }
+  }
+  sortID(){
+    for(let i=0;i<this.productList.length-1;i++){
+      for(let j=0;j<this.productList.length-i-1;j++){
+        let emp1=this.productList[j]
+        let emp2=this.productList[j+1]
+        let emp3:Product
+        if(emp1.productId>emp2.productId){
+          emp3=this.productList[j]
+          this.productList[j]=this.productList[j+1]
+          this.productList[j+1]=emp3
+        }
+      }
+    }
+
+  }
+
+  sortCost(){
+    for(let i=0;i<this.productList.length-1;i++){
+      for(let j=0;j<this.productList.length-i-1;j++){
+        let emp1=this.productList[j]
+        let emp2=this.productList[j+1]
+        let emp3:Product
+        if(emp1.productCost>emp2.productCost){
+          emp3=this.productList[j]
+          this.productList[j]=this.productList[j+1]
+          this.productList[j+1]=emp3
+        }
+      }
+    }
+  }
+  /*ngOnInit(){
+    this.httpClient.get("assets/data/books.json").subscribe(data =>
+      
+      {
+        console.log(data);
+       this.bookList=data;
+      },
+      (error)=>
+      {
+        this.errorMsg=error.message;
+        alert(this.errorMsg);
+      }
+
+      );
+  }*/
+
+  callService(){
+
+    if(!this.condition){
+     this.bookList= this.filedisplay.displayAll(this.filename);
+    }
+    else{
+      this.bookList=this.filedisplay.display(this.filename,this.id);
+    }
+  }
+  
+} 
