@@ -47,7 +47,7 @@ public class TraineeController {
 		String name=req.getParameter("uname");
 		String pass=req.getParameter("pass");
 		
-		if(name.equals("Shiv")){
+		if(name.equals("Shivani")){
 			String msg="Welcome "+name;
 			return "redirect:/management";
 		}
