@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="container">
-	<h2 align=center>Shiv Abhishek Soni</h2>
+	<h2 align=center>Shivani Diwakar</h2>
 		<h3 style="text-align: center"><b>Enter Trainee Details</b></h3>
 		<hr>
 	</div>
